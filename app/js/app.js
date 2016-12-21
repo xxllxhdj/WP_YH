@@ -11,6 +11,13 @@ angular.module('EchartsPage', [
     'EchartsPage.utility'
 ])
 
+.run(['Initialization', 'cfpLoadingBar', function (Initialization, cfpLoadingBar) {
+    cfpLoadingBar.start();
+    Initialization.finally(function () {
+        cfpLoadingBar.complete();
+    });
+}])
+
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', 'cfpLoadingBarProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, cfpLoadingBarProvider) {
 
@@ -18,7 +25,12 @@ angular.module('EchartsPage', [
             .state('home', {
                 url: '/home',
                 templateUrl: 'tpls/home.html',
-                controller: 'HomeController'
+                controller: 'HomeController',
+                resolve: {
+                    'loading': ['Initialization', function (Initialization) {
+                        return Initialization;
+                    }]
+                }
             });
 
         $urlRouterProvider.otherwise('/home');

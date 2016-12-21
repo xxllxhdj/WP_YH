@@ -5,6 +5,14 @@ body, * {
     font-family: "Microsoft YaHei";
 }
 
+#loading-bar .bar {
+    box-shadow: 0 0 10px rgba(34, 153, 221, 0.7);
+    -webkit-transition: width 0.4s ease;
+    -moz-transition: width 0.4s ease;
+    -o-transition: width 0.4s ease;
+    transition: width 0.4s ease;
+}
+
 .view-container {
     position: absolute;
     display: block;
