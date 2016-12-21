@@ -17,12 +17,13 @@ angular.module('EchartsPage', [
         $stateProvider
             .state('home', {
                 url: '/home',
-                templateUrl: 'tpls/home.html'
+                templateUrl: 'tpls/home.html',
+                controller: 'HomeController'
             });
 
         $urlRouterProvider.otherwise('/home');
 
-        //$locationProvider.html5Mode(true).hashPrefix('!');
+        // $locationProvider.html5Mode(true).hashPrefix('!');
 
         cfpLoadingBarProvider.includeSpinner = false;
     }
